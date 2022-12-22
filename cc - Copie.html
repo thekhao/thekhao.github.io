@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini jeu</title>
+</head>
+<body>
+    <div id="game-over" style="display: none;">
+        <h1 style="color: red; font-family: 'Rubik Vinyle'; font-size: 3rem; animation: arrive 0.5s;">
+          Game Over <br> <button onclick="location.reload()">restart</button>
+        </h1>
+      </div>
+      
+    <canvas id="game" style="width:85%; height:90%;"canvas>
+
+    <script>
+        // Récupérez l'élément canvas
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+
+        // Créez les variables pour la voiture et les obstacles
+        let carX = 25;
+        let carY = 30;
+        let obstacleX = 250;
+        let obstacleY =  Math.ceil(Math.random()* 125 / 10) * 10;
+        let obstacleX1 = 250;
+        let obstacleY1 =  Math.ceil(Math.random()* 125 / 10) * 10;
+
+        // definie l'image de la voiture
+        var img = new Image();
+        var img2 = new Image();
+        //definie l'emplacment de l'image de voirute
+        img.src = "f1.png";
+        img2.src = "clio.png";
+
+        // Dessinez la voiture et les obstacles sur le canvas
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.drawImage(img, carX, carY, 50, 25);
+            ctx.drawImage(img2,obstacleX, obstacleY, 50, 25);
+            ctx.drawImage(img2,obstacleX1, obstacleY1, 50, 25);
+        }
+
+        // Déplacez la voiture avec les touches du clavier
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp') {
+                carY -= 10;
+            } else if (event.key === 'ArrowDown') {
+                carY += 10;
+            }
+        });
+
+        // définir le nombre d'image par seconde
+        const FPS = 60;
+
+        // définir la fonction à exécuter en boucle
+        function loop() {
+            // enléve 2 a la position X de opstacle
+            obstacleX--;
+            obstacleX--;
+            obstacleX1--;
+            obstacleX1--;
+            //calcule la disctance entre l'obstacle et la voiture
+            var distance = Math.sqrt(
+      Math.pow(carX - obstacleX, 2) +
+      Math.pow(carY - obstacleY, 2)
+    );
+            var distance1 = Math.sqrt(
+      Math.pow(carX - obstacleX1, 2) +
+      Math.pow(carY - obstacleY1, 2)
+    );
+            var distance2 = Math.sqrt(
+      Math.pow(obstacleX - obstacleX1, 2) +
+      Math.pow(obstacleY - obstacleY1, 2)
+    );
+            // Si la distance est inférieure à 20 pixels, lance la fonction mort
+            if (distance < 20) {
+                showGameOver();
+            }
+            if (distance1 < 20) {
+                showGameOver();
+            }
+            if (distance2 < 20) {
+              let obstacleX = 250;
+            let obstacleY =  Math.ceil(Math.random()* 125 / 10) * 10+10;
+            let obstacleX1 = 250;
+            let obstacleY1 =  Math.ceil(Math.random()* 125 / 10) * 10-10;
+            }
+            //si l'obstacle touche le côter, le replace
+            if (obstacleX == 0) {
+                obstacleX = 250;
+                obstacleY = Math.ceil(Math.random()* 125 / 10) * 10;
+            }
+            if (obstacleX1 == 0) {
+                obstacleX1 = 250;
+                obstacleY1= Math.ceil(Math.random()* 125 / 10) * 10;
+            }
+        }
+
+        // exécuter la fonction en boucle toutes les 1000/iterationsPerSecond ms (60 fois par second)
+        setInterval(loop, 1000 / FPS);
+
+        // Mettez à jour le jeu 60 fois par seconde
+        setInterval(draw, 1000 / FPS);
+
+
+        //function de mort
+        function showGameOver() {
+    //cache la voiture
+    carX = -100;
+    // Récupère l'élément "game-over"
+    var gameOverElement = document.getElementById("game-over");
+
+    // Applique une animation d'arrivée à l'élément
+    gameOverElement.style.animation = "arrive 500ms";
+
+    // Change la propriété CSS "display" pour afficher l'élément
+    gameOverElement.style.display = "block";
+
+    // Centre l'élément sur l'écran
+    gameOverElement.style.position = "fixed";
+    gameOverElement.style.top = "50%";
+    gameOverElement.style.left = "50%";
+    gameOverElement.style.transform = "translate(-50%, -50%)";
+  }
+    </script>
+
+<style>
+    @keyframes arrive {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+  </style>
+</body>
+</html>

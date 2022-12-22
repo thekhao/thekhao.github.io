@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fichier center</title>
+</head>
+<body>
+ 
+
+    <div class="toolbar">
+        <a href="#" class="favorite">
+          <i class="fa fa-star"></i>‎ Favoris
+        </a>
+
+        <a href="/site/fichier.zip" class="download" download>
+          <i class="fa fa-download"></i>‎ Télécharger
+        </a>
+
+        <input type="text" id="input-text" style="background-color: rgb(57, 57, 57); color:rgb(184, 183, 183); border-radius: 15px;">
+
+        <a onclick="fileEmplaFunction()" class="save">
+          <i class="fa fa-star"></i>‎ Enregistrer
+        </a>
+        
+
+        <a href="http://www.example.com" class="redirect">
+          <i class="fa fa-clock"></i>‎ Récents
+        </a>
+      </div>
+
+
+
+
+      <button onclick="copyText(1)" class="big-button">
+        <i class="fa fa-file"></i>‎ Programmation
+        <div id="copy-animation1" style="display: none;color: rgb(148, 196, 148); margin-left: 120px;">
+            <p>Copié !</p>
+          </div>
+        <span class="date">20/12/22 18:47</span>
+        <span class="extra-text">tout mes fichier de html</span>
+      </button>
+
+      <button onclick="copyText(2)" class="big-button">
+        <i class="fa fa-file"></i>‎ Matière
+        <div id="copy-animation2" style="display: none;color: rgb(148, 196, 148); margin-left: 120px;">
+            <p>Copié !</p>
+          </div>
+        <span class="date">29/09/22 14:10</span>
+        <span class="extra-text">tout mes fichier de cours</span>
+      </button>
+
+      <button onclick="copyText(3)" class="big-button">
+        <i class="fa fa-file"></i>‎ Drole
+        <div id="copy-animation3" style="display: none;color: rgb(148, 196, 148); margin-left: 170px;">
+            <p>Copié !</p>
+          </div>
+        <span class="date">20/12/22 15:52</span>
+        <span class="extra-text">tout mes fichier Drole</span>
+      </button>
+
+      <button onclick="copyText(4)"class="big-button">
+        <i class="fa fa-file"></i>‎ projet
+        <div id="copy-animation4" style="display: none;color: rgb(148, 196, 148); margin-left: 200px;">
+            <p>Copié !</p>
+          </div>
+        <span class="date">17/12/22 9:52</span>
+        <span class="extra-text">tout mes projet</span>
+      </button>
+
+      
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      
+      <style>
+        .toolbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 50px;
+          background-color: #333;
+          color: #fff;
+        }
+      
+        .toolbar a {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          padding: 0 20px;
+          text-decoration: none;
+          color: #fff;
+          font-size: 16px;
+        }
+      
+        .toolbar a:hover {
+          background-color: #444;
+        }
+      
+        .toolbar .favorite {
+          background-color: #f0c040;
+        }
+      
+        .toolbar .favorite:hover {
+          background-color: #f0d060;
+        }
+      
+        .toolbar .redirect {
+          background-color: #4080c0;
+        }
+      
+        .toolbar .redirect:hover {
+          background-color: #60a0e0;
+        }
+      
+        .toolbar a i {
+          margin-left: 10px
+        }
+
+        .big-button {
+         display: flex;
+        align-items: center;
+        width: 90%;
+        max-width: 800px;
+        height: 50px;
+        margin: 20px auto;
+        padding: 0 20px;
+        background-color: #333;
+        color: #fff;
+        font-size: 16px;
+        text-align: left;
+}
+
+.big-button .date {
+  margin-left: auto;
+}
+
+.big-button .extra-text {
+  margin-left: 20px;
+}
+    </style>
+    <script>
+          // Récupération du bouton et de l'animation
+  var copyButton = document.getElementsByClassName("big-button");
+  var copyAnimation = document.getElementById("copy-animation");
+          
+        function fileEmplaFunction() {
+          var FilEmplassment = document.getElementById("input-text").value;
+        }
+        
+        function copyText(title) {
+          var FilEmplassment = document.getElementById("input-text").value;
+          if (typeof FilEmplassment !== "undefined") {
+               // maVariable existe
+               if (title  == 1) {
+                TextToCopy = "/programmation";
+                TextToCopy = FilEmplassment + TextToCopy;
+                var copyAnimation = document.getElementById("copy-animation1");
+        }
+            if (title  == 2) {
+                TextToCopy = "/matier";
+                TextToCopy = FilEmplassment + TextToCopy;
+                var copyAnimation = document.getElementById("copy-animation2");
+            }
+            if (title  == 3) {
+                TextToCopy = "/drole";
+                TextToCopy = FilEmplassment + TextToCopy;
+                var copyAnimation = document.getElementById("copy-animation3");
+            }
+            if (title  == 4) {
+                TextToCopy = "/projet";
+                TextToCopy = FilEmplassment + TextToCopy;
+                var copyAnimation = document.getElementById("copy-animation4");
+            }
+          const textArea = document.createElement('textarea');
+          textArea.value = TextToCopy;
+          document.body.appendChild(textArea);
+          textArea.select();
+      
+          // Copiez le texte
+          document.execCommand('copy');
+      
+          // Supprimez la zone de texte
+          document.body.removeChild(textArea);
+
+          // Affichage de l'animation
+    copyAnimation.style.display = "block";
+
+// Mise en pause de l'animation après 3 secondes
+setTimeout(function() {
+  copyAnimation.style.display = "none";
+}, 2000);
+        
+          }  else {
+            console.error("le fichier de remplacement n'est pas défini merci d'appuyer sur le bouton enregistrer")
+          }
+
+        }
+      
+      </script>
+</body>
+</html>
