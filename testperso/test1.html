@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ouvrir une application</title>
+  </head>
+  <body>
+    <button onclick="openApplication()">Ouvrir l'application</button>
+  </body>
+  <script>
+    function openApplication() {
+      // Définissez le chemin d'accès à l'application ici
+      const path = 'C:\Program Files\LGHUB\lghub.exe';
+      window.location.href = `file://${path}`;
+    }
+  </script>
+</html>
