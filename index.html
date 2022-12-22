@@ -47,24 +47,89 @@
 </head>
 <body>
   <!-- Utilisation de la bibliothèque Bulma pour structurer le contenu -->
-  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand70
-      <a class="navbar-item" href="/">
-        <img src="image/logo.png" alt="Logo du site" style="width: auto; height: 50px;">
-      </a>
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="http://www.test-site.com">
-          Contacter moi !
-        </a>
-      </div>
-    </div>
+  
+        <!--<img src="image/logo.png" alt="Logo du site" style="width: auto; height: 50px;">-->
+        <style>
+          .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 50px;
+            background-color: #333;
+            color: #fff;
+          }
+        
+          .toolbar a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+          }
+        
+          .toolbar a:hover {
+            background-color: #444;
+          }
+        
+          .toolbar .favorite {
+            background-color: #f0c040;
+          }
+        
+          .toolbar .favorite:hover {
+            background-color: #f0d060;
+          }
+        
+          .toolbar .redirect {
+            background-color: #4080c0;
+          }
+        
+          .toolbar .redirect:hover {
+            background-color: #60a0e0;
+          }
+        
+          .toolbar a i {
+            margin-left: 10px
+          }
+      
+          .big-button {
+           display: flex;
+          align-items: center;
+          width: 90%;
+          max-width: 800px;
+          height: 50px;
+          margin: 20px auto;
+          padding: 0 20px;
+          background-color: #333;
+          color: #fff;
+          font-size: 16px;
+          text-align: left;
+      }
+      </style>
+      
+      
+        <div class="toolbar">
+          <a onclick="location.reload()" class="favorite">
+            <i class="fa fa-star"></i>‎ Home
+          </a>
+      
+          <a href="" class="download">
+            <i class="fa fa-download"></i>‎ Restart
+          </a>
+      
+          <input type="text" id="input-text" style="background-color: rgb(57, 57, 57); color:rgb(184, 183, 183); border-radius: 15px;">
+      
+          <a class="save" onclick="showGameOver()">
+            <i class="fa fa-star"></i>‎ Cheat code
+          </a>
+          
+      
+          <a href="fichier.html" class="redirect">
+            <i class="fa fa-clock"></i>‎ Cloud
+          </a>
+        </div>
   </nav>
   <section class="section">
     <div class="container">
