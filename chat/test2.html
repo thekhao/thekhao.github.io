@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="fileInput">
+    <script>
+// Récupération de l'élément input
+var fileInput = document.getElementById('fileInput');
+
+// Déclenchement de la fonction lorsque l'utilisateur sélectionne un fichier
+fileInput.addEventListener('change', function() {
+  // Récupération du fichier sélectionné
+  var file = fileInput.files[0];
+
+  // Création d'un nouvel objet FileReader
+var reader = new FileReader();
+
+// Lecture du fichier texte
+reader.readAsText(file, 'utf-8');
+
+// Déclenchement de la fonction lorsque le fichier est entièrement chargé
+reader.onload = function() {
+  // Affichage du contenu du fichier texte dans la console
+  console.log(reader.result);
+}
+
+});
+
+
+    </script>
+</body>
+</html>

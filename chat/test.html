@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sendMessage(message) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/send-message.txt', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.send('message=' + encodeURIComponent(message));
+}
+
+function receiveMessages() {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '/receive-messages.txt', true);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Traiter les messages reçus ici
+      console.log(xhr.responseText);
+    }
+  };
+  xhr.send();
+}
+
+setInterval(receiveMessages, 1000); // Appeler receiveMessages toutes les secondes
+
+    </script>
+</body>
+</html>
